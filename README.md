@@ -10,24 +10,25 @@ am Maître de Conférences at the [Université Jean Monnet Saint-Étienne](https
 
 Classes will typically be in English, but any question in French (or in Italian...) is 
 welcome; chances are high that the answer, if within my competences, will be in the 
-same language.
-
-Feel free to reach out to me for any 
+same language. Feel free to reach out to me for any 
 question, either by <a href="mailto: filippo.nuccio@univ-st-etienne.fr">e-mail</a> or o
 Zulip (see below for more on this).
 
 
+In each lecture we will work on one file, to which I post solutions some time after the lecture. For some of them there are also a `.md` and a `.pdf` file with the discussed content. If you add the [markdown-collapsible](https://marketplace.visualstudio.com/items?itemName=zinc0x1E.markdown-collapsible) extension to your VSCode you can expand the `▸` symbols as I do in the lectures.
+
 Classes are on Wednesday, from 2PM to 5PM, at <a href="https://www.ens-lyon.fr/en/campus-life/campus-tour/maps-directions">ENS-Lyon</a> in the *Salle de Conseil* 
 on the 3rd floor (except for the last one, that will take place in another room in the 
-same floor). The preliminary schedule is as follows:
+same floor). 
+The preliminary schedule is as follows:
 
-| Date      | Topic         | Notes
-|-----------|---------------|---------------
-| Feb 19th| Introduction to proof assistants and to propositional calculus| We will also address installation and practical issues.
+| Date      | Topic         | Accompanying file | Notes
+|-----------|---------------|---------------|---------------
+| Feb 19th| Introduction to proof assistants and to propositional calculus| [Lean File](https://github.com/faenuccio-teaching/GradCourse25/blob/master/GradCourse25/1_PropositionalCalculus.lean) <br> [MarkDown](https://github.com/faenuccio-teaching/GradCourse25/blob/master/GradCourse25/1_PropositionalCalculus_lecture.md) <br> [PDF](https://github.com/faenuccio-teaching/GradCourse25/blob/master/GradCourse25/1_PropositionalCalculus_lecture.pdf) <br> Solutions |We will also address installation and practical issues.
 | Feb 26th| Basic set theory and functions among sets|
 | Mar 12th| Formalizing algebraic structures |
 | Feb 19th| Formalizing topological spaces |
-| Feb 26th| Formalizing analysis and more advanced topics | Subject to change according to participants' taste and request.
+| Feb 26th| Formalizing analysis and more advanced topics | | Subject to change according to participants' taste and request.
 
 
 
