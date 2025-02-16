@@ -44,7 +44,7 @@ the course.
 * Install a *working* `git` installation, if you do not have 
 one yet: for some help, you can have a look at <a href="https://www.imo.universite-paris-saclay.fr/~patrick.massot/misc/git.html">this page maintained by Patrick Massot</a>.
 * Install Lean4 following the [official instructions](https://docs.lean-lang.org/lean4/doc/quickstart.html). You do 
-not need to set-up a new Lean project, since we'll be using this repository for that.
+not need to set-up a new Lean project, since we'll be using this repository for that. I suggest that you also install the [ErrorLens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) extension to VSCode, but this is optional.
 * [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#forking-a-repository) the [course repository](https://github.com/faenuccio-teaching/GradCourse25.git) to your GitHub account, and then clone this fork to your laptop. The address of the repository is https://github.com/faenuccio-teaching/GradCourse25.git
 * Don't panic if something went wrong: we'll try to fix problems during the first class.
 
