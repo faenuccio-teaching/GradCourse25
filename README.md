@@ -1,8 +1,9 @@
-# M2Lyon2425
-This is the webpage for the course [*Preuve assistée par ordinateur dans Lean*](http://edinfomaths.universite-lyon.fr/these/cours-doctoraux) for the graduate school 
-*ED InfoMath*, held in Lyon in February--March 2025.
+## Welcome
 
-## Teacher and schedule:
+This is the webpage for the course [*Preuve assistée par ordinateur dans Lean*](http://edinfomaths.universite-lyon.fr/these/cours-doctoraux) for the graduate school 
+*ED InfoMath*, held in Lyon in February−March 2025.
+
+### Teacher and schedule
 
 The teacher is [me/Filippo A. E. Nuccio](https://perso.univ-st-etienne.fr/nf51454h/): I 
 am Maître de Conférences at the [Université Jean Monnet Saint-Étienne](https://www.univ-st-etienne.fr/fr/index.html) and a member of the [Institut Camille Jordan](https://math.univ-lyon1.fr/icj/). 
@@ -16,16 +17,13 @@ question, either by <a href="mailto: filippo.nuccio@univ-st-etienne.fr">e-mail</
 Zulip (see below for more on this).
 
 
-### First Term
-
 Classes are on Wednesday, from 2PM to 5PM, at <a href="https://www.ens-lyon.fr/en/campus-life/campus-tour/maps-directions">ENS-Lyon</a> in the *Salle de Conseil* 
 on the 3rd floor (except for the last one, that will take place in another room in the 
 same floor). The preliminary schedule is as follows:
 
 | Date      | Topic         | Notes
 |-----------|---------------|---------------
-| Feb 19th| Introduction to proof assistants and to propositional calculus| We will also 
-address installation and practical issues.
+| Feb 19th| Introduction to proof assistants and to propositional calculus| We will also address installation and practical issues.
 | Feb 26th| Basic set theory and functions among sets|
 | Mar 12th| Formalizing algebraic structures |
 | Feb 19th| Formalizing topological spaces |
@@ -33,7 +31,7 @@ address installation and practical issues.
 
 
 
-## Prerequisites 
+### Prerequisites 
 
 You are required to perform the following tasks before the beginning of the course.
 * Make sure that you have a working WiFi, usually via Eduroam.
@@ -47,6 +45,6 @@ the course.
 one yet: for some help, you can have a look at <a href="https://www.imo.universite-paris-saclay.fr/~patrick.massot/misc/git.html">this page maintained by Patrick Massot</a>.
 * Install Lean4 following the [official instructions](https://docs.lean-lang.org/lean4/doc/quickstart.html). You do 
 not need to set-up a new Lean project, since we'll be using this repository for that.
-* Clone the course repository on your laptop using the address: https://github.com/faenuccio-teaching/GradCourse25.git.
+* [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#forking-a-repository) the [course repository](https://github.com/faenuccio-teaching/GradCourse25.git) to your GitHub account, and then clone this fork to your laptop. The address of the repository is https://github.com/faenuccio-teaching/GradCourse25.git
 * Don't panic if something went wrong: we'll try to fix problems during the first class.
 
