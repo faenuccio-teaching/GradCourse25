@@ -100,6 +100,6 @@
     "manifestFile": "lake-manifest.json",
     "inputRev": "main",
     "inherited": false,
-    "configFile": "lakefile.lean"}],
+    "configFile": "docbuild/lakefile.toml"}],
  "name": "GradCourse25",
  "lakeDir": ".lake"}
