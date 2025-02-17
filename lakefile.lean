@@ -16,5 +16,5 @@ require «doc-gen4» from git
   "https://github.com/leanprover/doc-gen4" @ "d684d596bcf8fbb114320776b80a1dbfce0a0786"
 
 @[default_target]
-lean_lib «GradCourse2425» where
+lean_lib «GradCourse25» where
   -- add any library configuration options here
