@@ -11,5 +11,9 @@ autoImplicit = false
 name = "mathlib"
 scope = "leanprover-community"
 
+meta if get_config? env = some "dev" then -- dev is so not everyone has to build it
+require «doc-gen4» from git
+  "https://github.com/leanprover/doc-gen4" @ "d684d596bcf8fbb114320776b80a1dbfce0a0786"
+
 [[lean_lib]]
 name = "GradCourse25"
