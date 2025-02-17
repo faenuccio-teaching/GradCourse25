@@ -1,0 +1,18 @@
+name = "GradCourse2425"
+defaultTargets = ["GradCourse25"]
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+
+[[require]]
+name = "doc-gen4"
+git = "https://github.com/leanprover/doc-gen4"
+rev = "main"
+
+[[lean_lib]]
+name = "GradCourse25"
