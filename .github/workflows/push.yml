@@ -70,12 +70,12 @@ jobs:
           ruby-version: "3.0"  # Specify Ruby version
           bundler-cache: true  # Enable caching for bundler
 
-      - name: Build website using Jekyll
-        # if: github.event_name == 'push' && env.HOME_PAGE_EXISTS == 'true'
-        working-directory: home_page
-        env: 
-          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: JEKYLL_ENV=production bundle exec jekyll build  # Note this will also copy the blueprint and API doc into home_page/_site
+      # - name: Build website using Jekyll
+      #   # if: github.event_name == 'push' && env.HOME_PAGE_EXISTS == 'true'
+      #   working-directory: home_page
+      #   env: 
+      #     JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: JEKYLL_ENV=production bundle exec jekyll build  # Note this will also copy the blueprint and API doc into home_page/_site
 
       - name: "Upload website (API documentation, blueprint and any home page)"
         # if: github.event_name == 'push'
