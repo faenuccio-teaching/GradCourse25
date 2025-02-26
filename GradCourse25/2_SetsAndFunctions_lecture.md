@@ -25,6 +25,8 @@ expresses that `α` is a type and `S` is a set of elements/terms of the type `α
 variable (S : Set)
 ```
 does not mean "let `S` be a set": it means nothing and it is an error.
+
+`⌘`
 +++
 
 +++ A set coincides with the test-function defining it.
@@ -41,7 +43,7 @@ so `(Set α) = (α → Prop)`.
 
     `⌘`
 
-Yet, given a function `P : α → Prop` we prefer to write `setOf P : Set α` rather then `P : Set α` to avoid _abusing definitional equality_.
+Yet, given a function `P : α → Prop` we prefer to write `setOf P : Set α` to denote the set, rather then `P : Set α`, to avoid _abusing definitional equality_.
 
 ### Some examples: 
 1. How to prove that something belongs to a set?
@@ -66,7 +68,6 @@ We take the **first approach**: being a subset is *an implication*
 ```lean
     def (T ⊆ S : Prop) := ∀ a, a ∈ T → a ∈ S
 ```
-`⌘`
 
 One can also _upgrade_ sets to types: `T : Set S` for `S : Set α` means `T : Set ↑S = Set (S : Type*)`.
 
@@ -213,6 +214,8 @@ In particular, the following equivalence is not a tautology:
 example : Injective f ↔ InjOn f univ
 ```
 rather, it will be an exercise for you.
+
+The obvious definition of *surjectivity* is also available...
 
 `⌘`
 

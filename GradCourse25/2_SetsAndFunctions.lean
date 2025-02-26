@@ -17,6 +17,10 @@ section Definitions
 example (S : Set) := sorry
 example {α : Type} (S : Set α) : S = S := rfl
 
+
+-- `⌘`
+
+
 -- **A tautology**
 
 -- **ToDo**
@@ -47,18 +51,15 @@ example : 1 ∈ PositiveNaturals := by
 -- Why does this *fail*? How to fix it?
 example : (-1) ∉ PositiveNaturals := sorry
 
--- **The even naturals**
 
--- **ToDo?**
+-- **ToDo**
 def EvenNaturals : Set ℕ := by
   sorry
 
--- **ToDo?**
+-- **ToDo**
 example (n : ℕ) : n ∈ EvenNaturals → (n+2) ∈ EvenNaturals := by
   sorry
 
-
--- **An abstract set**
 
 -- **ToDo**
 def AbstractSet {α : Type} (P : α → Prop) : Set α := P
@@ -72,20 +73,16 @@ example {α : Type} (P : α → Prop) : AbstractSet P = AbstractSet' P := by
 
 -- `⌘`
 
+
 -- **ToDo**
 -- **Subsets as implication**
 example {α : Type} (S T : Set α) (s : α) (hST : S ⊆ T) (hs : s ∈ S) : s ∈ T := by
   sorry
 
-
--- `⌘`
-
-
--- **A double inclusion**
-
 -- **ToDo**
 example (α : Type) (S T W : Set α) (hST : S ⊆ T) (hTW : T ⊆ W) : S ⊆ W := by
   sorry
+
 
 -- **Another take on subsets and sets as types**
 
@@ -108,9 +105,6 @@ example (α : Type) (S : Set α) (P : S → Prop) (x : ↑S) (hx : x ∈ subsub 
 -- **ToDo?**
 -- Why does this *fail*? How to fix it?
 example : ∀ n : PositiveIntegers, 0 ≤ n := sorry
-
-
--- `⌘`
 
 
 /- **§ Some exercises** -/
@@ -153,15 +147,19 @@ example (α : Type) (S : Set α) : subsub = subsub' := sorry
 
 end Definitions
 
+
+-- `⌘`
+
+
 -- ## Operations on sets
 
 section Operations
 
 -- **Self-intersection is the identity, proven with extensionality**
-
 -- **ToDo**
 example (α : Type) (S : Set α) : S ∩ S = S := by
   sorry
+
 
 -- `⌘`
 
@@ -196,6 +194,7 @@ example : (setOf (0 < ·) : Set ℤ) ∩ setOf (· < 0) = ∅ := by
 -- **ToDo**
 example {α I : Type} (A : I → Set α) (x : α) : x ∈ ⋃ i, A i ↔ ∃ i, x ∈ A i := by
   sorry
+
 
 /- **§ Some exercises** -/
 
@@ -278,11 +277,6 @@ example : Set α → Set β := by
   sorry
 
 
--- Observe that `obtain` does not work here
--- **ToDo**
-example (b : β) (hf : Surjective f) : α := by sorry
-
-
 -- **ToDo**
 example (α β: Type) (f : α → β) (S : Set α) : S ≠ ∅ → f '' S ≠ ∅ := by
   sorry
@@ -302,6 +296,11 @@ example : 2 ∈ Nat.succ ⁻¹' {2, 3} ∧ 1 ∉ .succ ⁻¹' {0, 3} := by
 -- **ToDo**
 example : InjOn (fun n : ℤ ↦ n ^ 2) PositiveIntegers := by
   sorry
+
+
+-- Observe that `obtain` does not work here
+-- **ToDo**
+example (b : β) (hf : Surjective f) : α := by sorry
 
 
 
