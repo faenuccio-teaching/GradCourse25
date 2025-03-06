@@ -124,9 +124,9 @@ more general filters as "generalised sets" of `α`. So, for `F : Filter α`, say
 
 * If `α = ℕ`, then `Filter.atTop` is "the set of elements that are large enough".
 
-`⌘`
 
-+++ Filters as generalised sets: let's extend some set-theoretical notions to them.
++++ Filters as generalised sets : NON HO SISTEMATO IL CODICE CHE VA AVEC
+Since we're looking at filters as generalised sets, let's extend some set-theoretical notions to them.
 
 1. The **order** relation: sets on `α` are
 ordered by inclusion, so `T₁ ≤ T₂ ↔ T₁ ⊆ T₂ ↔ ∀ s, s ⊇ T₂ → s ⊇ T₁`. Hence:
@@ -142,7 +142,7 @@ ordered by inclusion, so `T₁ ≤ T₂ ↔ T₁ ⊆ T₂ ↔ ∀ s, s ⊇ T₂ 
 
 
 
-#### Convergence: NON HO SISTEMATO IL CODICE CHE VA AVEC
+#### Convergence
 Given $f : ℝ → ℝ$, we have $\lim_{x → a}f(x) = b$ if, for every $x ∈ ℝ$ close to $a$, its image
 $f(x)$ is close to $b$: in other words $f$ sends
 the "set of elements close to $a$" to a "generalised subset"
@@ -156,7 +156,7 @@ All this becomes
     def Tendsto (f : α → β) (F : Filter α) (G : Filter β) := F.map f ≤ G
 
 
-`⌘` → Some exercise for you
+`⌘`
 
 +++
 

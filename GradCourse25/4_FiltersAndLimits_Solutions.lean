@@ -246,7 +246,7 @@ example (s t : Set α) : s ⊆ t ↔ (𝓟 t).sets ⊆ (𝓟 s).sets := by
 
 #print Filter.map
 
--- This is compatible to the definition for sets.
+-- A function extends to set in a way compatible to its extension to sets.
 -- **ToDo**
 example {s : Set α} (f : α → β) : (𝓟 s).map f = 𝓟 (f '' s) := by
   ext A
@@ -256,6 +256,10 @@ example {s : Set α} (f : α → β) : (𝓟 s).map f = 𝓟 (f '' s) := by
 
 
 --  **ToDo**
+/- E' completamente sbagliato come esempio perche' usa `∀ᶠ` e `[=]ᶠ` e
+non usa la definizione di `Tendsto` con `≤`. Si puo' tenere solo se si cambia la
+dimostrazione molto, oppure va cambiato esempio. E poi va aggiunto un ex simile
+a questo.-/
 example : Tendsto (fun n : ℕ ↦ (n + 1 : ℝ) / n) atTop (𝓝 1) := by
   have h1 := tendsto_const_div_atTop_nhds_zero_nat 1
   have h2 : Tendsto (fun _ : ℕ ↦ (1 : ℝ)) atTop (𝓝 1) := tendsto_const_nhds
