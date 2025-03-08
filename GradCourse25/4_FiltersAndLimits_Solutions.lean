@@ -255,28 +255,32 @@ example {s : Set α} (f : α → β) : (𝓟 s).map f = 𝓟 (f '' s) := by
   exact Set.image_subset_iff.symm
 
 
---  **ToDo**
-/- E' completamente sbagliato come esempio perche' usa `∀ᶠ` e `[=]ᶠ` e
-non usa la definizione di `Tendsto` con `≤`. Si puo' tenere solo se si cambia la
-dimostrazione molto, oppure va cambiato esempio. E poi va aggiunto un ex simile
-a questo.-/
-example : Tendsto (fun n : ℕ ↦ (n + 1 : ℝ) / n) atTop (𝓝 1) := by
-  have h1 := tendsto_const_div_atTop_nhds_zero_nat 1
-  have h2 : Tendsto (fun _ : ℕ ↦ (1 : ℝ)) atTop (𝓝 1) := tendsto_const_nhds
-  have h3 := Tendsto.add h1 h2
-  rw [zero_add] at h3
-  refine Tendsto.congr' ?_ h3
-  rw [Filter.EventuallyEq]
-  -- filter_upwards [eventually_ne_atTop 0] with n hn
-  rw [Filter.Eventually]
-  rw [Filter.mem_atTop_sets]
-  use 1
-  intro n hn
-  simp only [one_div, mem_setOf_eq]
-  rw [add_div, div_self]
-  · ring
-  · rw [Nat.cast_ne_zero]
-    omega
+-- This is in of course in the library, but it is an
+-- **Exercise** for you (as the library proof is incomprehensible).
+theorem mapMono {α β : Type*} (f : α  → β) : Monotone (map f) := by
+  rw [Monotone]
+  intro F G h
+  rw [Filter.le_def]
+  intro S hS
+  rw [mem_map] at hS ⊢
+  apply h
+  assumption
+
+
+-- **ToDo**
+example : Tendsto (fun (x : ℝ) ↦ x) atTop atTop := by
+  rw [Tendsto]
+  rw [map_id']
+
+
+-- **ToDo** Composition becomes much easier!
+example {γ : Type*} (f : α → β) (g : β → γ) (F : Filter α) (G : Filter β) (H : Filter γ) :
+    Tendsto f F G → Tendsto g G H → Tendsto (g ∘ f) F H := by
+  intro hFG hGH
+  -- rw [Tendsto] at hFG hGH ⊢
+  -- have := map_mono (m := g) hFG
+  exact_mod_cast le_trans (map_mono /- (m := g) -/ hFG) hGH
+  -- apply le_trans (map_mono /- (m := g) -/ hFG) hGH
 
 
 -- `⌘`
@@ -300,8 +304,6 @@ example (F : Filter α) (s : Set α) : F ≤ 𝓟 s ↔ s ∈ F := by
 
 /- Now to prove the compatibility of limits with compositions,
 we use the properties of `Filter.map`.-/
-#print Filter.map_mono -- `Filter.map f` is monotone.
--- If F ≤ F', then map f F ≤ map f F'.
 #print Filter.map_map -- `Filter.map (g ∘ f) = Filter.map g ∘ Filter.map f`
 -- **Exercise**
 example {X Y Z : Type*} (f : X → Y) (g : Y → Z) (F : Filter X)
@@ -311,7 +313,7 @@ example {X Y Z : Type*} (f : X → Y) (g : Y → Z) (F : Filter X)
   change map (g ∘ f) F ≤ H
   rw [← map_map]
   refine le_trans ?_ h'
-  apply map_mono
+  apply mapMono -- or `apply map_mono` from the library
   exact h
 
 
@@ -322,6 +324,37 @@ example {X Y Z : Type*} (f : X → Y) (g : Y → Z) (F : Filter X)
 example {X Y : Type*} (f : X → Y) (F : Filter X) (G : Filter Y) :
     Tendsto f F G ↔ Tendsto_preimage f F G := Iff.rfl
 
+
+
+#check mem_nhds_iff_exists_Ioo_subset (α := ℝ)
+
+-- **Exercise** -- do not forget the tactic `linarith` to close easy inequalities
+example : Tendsto (fun (x : ℝ) ↦ 1/ x ) atTop (𝓝 0) := by
+  rw [Tendsto]
+  simp only [one_div, Filter.map_inv]--, inv_atTop₀]
+  rw [le_def]
+  intro s Hs
+  rw [Filter.mem_inv, mem_atTop_sets, inv_preimage]
+  rw [mem_nhds_iff_exists_Ioo_subset] at Hs
+  obtain ⟨m, M, z_mem, hs⟩ := Hs
+  use 1 + M⁻¹
+  intro x hx
+  rw [Set.mem_inv]
+  apply hs
+  rw [mem_Ioo] at z_mem ⊢
+  constructor
+  · apply lt_trans z_mem.1
+    apply inv_pos_of_pos
+    apply lt_of_lt_of_le (inv_pos_of_pos z_mem.2)
+    linarith
+  · rw [inv_lt_comm₀ _ z_mem.2]
+    linarith
+    apply lt_of_lt_of_le (inv_pos_of_pos z_mem.2)
+    linarith
+
+
+
+  -- -- filter_upwards
 
 -- `⌘`
 
@@ -388,7 +421,7 @@ lemma EventuallyLTOne : ∀ᶠ x in 𝓝 (0 : ℝ), |x| < 1 := by
     rfl
 
 
--- **ToDo** **WARNING: THIS IS A WRONG PROOF**
+-- **ToDo** **WARNING: THIS IS AN UGLY PROOF**
 example : ∀ᶠ z in 𝓝 (0 : ℝ), Tendsto (fun (n : ℕ) ↦ z ^ n) atTop (𝓝 0) := by
   have := EventuallyLTOne
   rw [eventually_iff] at this ⊢
@@ -396,6 +429,35 @@ example : ∀ᶠ z in 𝓝 (0 : ℝ), Tendsto (fun (n : ℕ) ↦ z ^ n) atTop (�
   intro x hx
   simp only [tendsto_pow_atTop_nhds_zero_iff, mem_setOf_eq]
   exact hx
+
+
+--  **ToDo** Bisogna intrdurre `[=]ᶠ`.
+/- E' completamente sbagliato come esempio perche' usa `∀ᶠ` e `[=]ᶠ` e
+non usa la definizione di `Tendsto` con `≤`. Si puo' tenere solo se si cambia la
+dimostrazione molto, oppure va cambiato esempio. E poi va aggiunto un ex simile
+a questo.-/
+example : Tendsto (fun n : ℕ ↦ (n + 1 : ℝ) / n) atTop (𝓝 1) := by
+  have h1 := tendsto_const_div_atTop_nhds_zero_nat 1
+  have h2 : Tendsto (fun _ : ℕ ↦ (1 : ℝ)) atTop (𝓝 1) := tendsto_const_nhds
+  have h3 := Tendsto.add h1 h2
+  rw [zero_add] at h3
+  rw [Tendsto]
+  -- refine Tendsto.congr' ?_ h3
+  apply le_trans (le_of_eq ?_) h3
+  congr
+  ext -- this is false, but eventually true
+  sorry
+  -- rw [Filter.EventuallyEq]
+  -- filter_upwards [eventually_ne_atTop 0] with n hn
+  -- rw [Filter.Eventually]
+  -- rw [Filter.mem_atTop_sets]
+  -- use 1
+  -- intro n hn
+  -- simp only [one_div, mem_setOf_eq]
+  -- rw [add_div, div_self]
+  -- · ring
+  -- · rw [Nat.cast_ne_zero]
+  --   omega
 
 
 -- `⌘`
