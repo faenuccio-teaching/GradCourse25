@@ -171,8 +171,18 @@ The notation for this is: `∀ᶠ x in F, p x`: type `∀ᶠ` as `\forall + \^f`
 
 
 Intuitively, this means that `p` is true on the "generalised set" corresponding to `F`:
-* If `F = atTop`, the statement `{x | p x} ∈ F` means that `p` is true for large enough `x`: and if `F = 𝓝 a`, then `p`` is true for all `x` in a neighbourhood of `a`.
-* What about claims that are true "for almost all `x`"?
+
+* If `F = atTop`, the statement `{x | p x} ∈ F` means that `p` is true for large enough `x`: and if `F = 𝓝 a`, then `p` is true for all `x` in a neighbourhood of `a`.
+
+* The notation `[=]ᶠ` (**no space** between `=`, `ᶠ` and the limit) is the special case when `p` is an equality: given a filter `F : Filter α`, and two functions `f g : α → β`, 
+
+    ```lean
+    f =ᶠ[F] g ↔ ∀ᶠ x in l, f x = g x
+    ```
+
+  so `f g` are "eventually equal".
+
+* How to express that a claim is true "for almost all `x`"?
 
 `⌘`
 
@@ -198,5 +208,7 @@ Another filter notion is `Filter.Frequently`. You
 would use it for example to express something like
 "there exist arbitrarily large `n` in `ℕ` such that *so-and-so*".
 
-
-# Some explicit limits
+By definition,
+```lean
+(∃ᶠ x in F, p x) ↔ (¬ ∀ᶠ x in F, ¬ p x)
+```
