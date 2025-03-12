@@ -12,7 +12,7 @@ In mathematics, we do not use monoids too much: they are somewhat *weak* algebra
 
 * In usual pen-and-paper mathematics, a monoid is a set `M` endowed with an **associative** operation `* : M × M → M` and a unit `1 ∈ M`, satisfying `∀ x, 1 * x = x * 1 = x`.
 
-The way monoids are implemented in Mathlib is hierarchical: one defines sets with an operation, then generalises them to sets with an *associative* operations, then constructs sets with a particular element `1`, then generalises both notions together by requiring a compatibility between `1` and `*`, etc...
+The way monoids are implemented in Mathlib is hierarchical: one defines sets with an operation, then generalises them to sets with an *associative* operation, then constructs sets with a particular element `1`, then generalises both notions together by requiring a compatibility between `1` and `*`, etc...
 
 +++ Coming down to earth
 A monoid comes with five main fields, gathered into a "structure"
@@ -45,7 +45,7 @@ In principle, the symbol used to denote the operation `M → M → M` should pla
 
 But on rings we certainly want to have two operations **with different symbols**.
 
-Also, the names of properties of `* : M → M → M` ought to be `mul`-related, whereas the names of those of `+ : M → M → M` should probably have an `add` floating around. Likewise, the neutral element must be `1` or `0` according at what symbol we're using.
+Also, the names of properties of `* : M → M → M` ought to be `mul`-related, whereas the names of those of `+ : M → M → M` should probably have an `add` floating around. Likewise, the neutral element must be `1` or `0` according at what operation we're using.
 
 * An `AddMonoid` is like a monoid, but where `*` is written `+` and `1` is written `0`; and the `@toadditive` tag automatically creates the relevant translation.
 
@@ -130,8 +130,6 @@ Of course, there is also the notion a group *isomorphism*: this is a structure w
 
 +++
 
-`⌘`
-
 ## Subgroups
 A subgroup is *not defined* as a group that is also a subset. It is a subset closed under multiplication:
 
@@ -156,6 +154,8 @@ Indeed, subgroups are *ordered* (by inclusion of their carrier), so `{1} = ⊥` 
 
 
 +++
+
+`⌘`
 
 # Rings
 

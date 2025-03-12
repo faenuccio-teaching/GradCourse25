@@ -90,6 +90,11 @@ example (G H : Type*) [Group G] [Group H] (f : G →* H) (g : G) : f (g⁻¹) = 
   sorry
 
 
+-- **ToDo**
+example {G H : Type*} [Group G] [Group H] (f : G → H) (h : ∀ x y, f (x * y) = f x * f y) :
+    G →* H := sorry
+
+
 -- `⌘`
 
 
@@ -101,9 +106,9 @@ def IsoOfBijective (G H : Type*) [Group G] [Group H] (f : G →* H)
     (h_surj : Surjective f) (h_inj : Injective f) : G ≃* H := by
   sorry
 
--- **ToDo**
-example {G H : Type*} [Group G] [Group H] (f : G → H) (h : ∀ x y, f (x * y) = f x * f y) :
-    G →* H := sorry
+
+-- `⌘`
+
 
 -- ## Subgroups
 
@@ -206,7 +211,6 @@ example (I : Ideal R) (r : R) : r ∈ I → IsUnit r → I = ⊤ := by
 -- Show that the image of an ideal through a surjective ring homomorphism is again an ideal
 -- **Exercise**
 example (f : R →+* S) (I : Ideal R) (hf : Surjective f) : Ideal S := sorry
-
 
 
 
