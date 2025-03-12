@@ -47,7 +47,7 @@ But on rings we certainly want to have two operations **with different symbols**
 
 Also, the names of properties of `* : M → M → M` ought to be `mul`-related, whereas the names of those of `+ : M → M → M` should probably have an `add` floating around. Likewise, the neutral element must be `1` or `0` according at what operation we're using.
 
-* An `AddMonoid` is like a monoid, but where `*` is written `+` and `1` is written `0`; and the `@toadditive` tag automatically creates the relevant translation.
+* An `AddMonoid` is like a monoid, but where `*` is written `+` and `1` is written `0`; and the `[@to_additive]` tag automatically creates the relevant translation.
 
     It has an extra-field `nsmul` of type `ℕ → M → M` that defines the multiplication by a natural number `n`, by default equal to `n • x = x + x ... + x` (`n` times). Type `•` as `\smul`.
 
@@ -66,12 +66,11 @@ And then one can go on to define `AddCommMonoid M` to be what you expect.
 A monoid homomorphism is a function `f : M → N` that respects the operation. There could be (at least) two ways to define this: 
 1. we could declare the property `MonHom : (M → N) → Prop` as
 
-    def MonHom : (M → N) → Prop := f ↦ ( ∀ a b, f (a * b) = (f a) * (f b) ) ∧ (f 1 = 1)
+        def MonHom : (M → N) → Prop := f ↦ ( ∀ a b, f (a * b) = (f a) * (f b) ) ∧ (f 1 = 1)
     
 and let `MonoidHom` be the subset (or the subtype)
 
-    MonoidHom = {f : M → N | MonHom f} (or {f : M → N | MonHom f})
-
+    MonoidHom = {f : M → N | MonHom f}
 This would mean that a monoid homomorphism is a pair `⟨f, hf : MonHom f⟩`.
 
 2. we could define a new type `MonoidHom M N`, as a structure
@@ -106,7 +105,7 @@ Of course, there are also the notion of `AddGroup` with
 and notions of `CommGroup` and `AddCommGroup`, that add a commutativity constraint on `*` or on `+`, respectively, in order to define
 commutative (or *abelian*) groups.
 
-* There is a `group` tactic that proves identities that holds in any group (equivalently, it proves those identities that hold in free groups). The equivalent version for *commutative* groups is `abel`. 
+* There is a `group` tactic that proves identities that hold in any group (equivalently, it proves those identities that hold in free groups). The equivalent version for *commutative* groups is `abel`. 
 
 Concerning group homomorphisms, they are just **monoid** homomorphisms, so they are a structure with simply three structures: the function itself, and two proofs that it preserves multiplication and sends `1` to `1`.
 
