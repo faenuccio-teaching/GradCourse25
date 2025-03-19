@@ -115,7 +115,7 @@ section ConvergenceOne
 def Tendsto_preimage (f : α → β) (F : Filter α) (G : Filter β) : Prop :=
   ∀ V ∈ G, f ⁻¹' V ∈ F
 
--- The behaviour of preimages through composition of functions
+-- The behaviour of preimages of sets through composition of functions
 #check Set.preimage_comp
 
 -- Compatibility with composition.
@@ -165,7 +165,8 @@ example {s : Set α} (f : α → β) : (𝓟 s).map f = 𝓟 (f '' s) := by
 
 
 -- This is in of course in the library, but it is an
--- **Exercise** for you (as the library proof is incomprehensible).
+-- **Exercise** for you to do later
+-- (as the library proof is incomprehensible).
 theorem mapMono {α β : Type*} (f : α  → β) : Monotone (map f) := by
   sorry
 
@@ -222,16 +223,14 @@ example : Tendsto (fun (x : ℝ) ↦ 1/ x ) atTop (𝓝 0) := by
   sorry
 
 
-
-  -- -- filter_upwards
-
 -- `⌘`
+
 
 end ConvergenceTwo
 
 -- # Filters and eventually true properties.
 
--- ## `∀ᶠ`
+-- ##`∀ᶠ`
 
 
 section Eventually
@@ -321,7 +320,7 @@ end Eventually
 -- `⌘`
 
 
--- ## `∃ᶠ`
+-- ##`∃ᶠ`
 
 section Frequently
 

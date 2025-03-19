@@ -50,9 +50,9 @@ $$
 ∀\; ε > 0, ∃\; δ > 0 \;\text{ such that }\; f (a - δ, a + δ) ⊆ (b - ε, b + ε).
 $$
 This means that for every neighbourhood $U_b$ of $b$, there exists a neighbourhood $V_a$ of $a$ such
-that $V_a ⊆ f^{-1}U_b$: since $f^{-1}U_b ∈ 𝓝 b$, upwards-closeness of filters transforms this into
+that $V_a ⊆ f^{-1}U_b$. Upwards-closeness of filters makes the explicit description of $V_a$ useless: to require $V_a ⊆ f^{-1}U_b$ is the same as
 
-    ∀ U : Set ℝ, U ∈  𝓝 b → f⁻¹' U ∈ 𝓝 a.
+    ∀ U : Set ℝ, U ∈  𝓝 b → f⁻¹' U ∈ 𝓝 a
 
 
 
@@ -60,7 +60,7 @@ What about the statement
 $$\lim_{x → +∞} f(x)=b\quad ?$$
 It simply becomes
 
-    ∀ U : Set ℝ, U ∈  𝓝 b → f⁻¹' U ∈ (atTop : Filter ℝ) .
+    ∀ U : Set ℝ, U ∈  𝓝 b → f⁻¹' U ∈ (atTop : Filter ℝ) 
 
 
 Similarly, if $(a_n)_{n∈ ℕ}$ is a sequence (here with real values,
@@ -80,11 +80,11 @@ prove theorems.
 
 For example, let $f,g : ℝ → ℝ$ and $a,b,c ∈ ℝ$. One theorem is that
 $$
-\lim_{x → a}f (x)=a ⇒ \lim_{y → c}g(y)= c ⇒ \lim_{x → a}(g∘ f)(x)=c
+\lim_{x → a}f (x)=b ⇒ \lim_{y → b}g(y)= c ⇒ \lim_{x → a}(g∘ f)(x)=c
 $$
-and
+while
 $$
-\lim_{x → +∞}f (x)=a ⇒ \lim_{y → c}g(y)= c ⇒ \lim_{x → +∞}(g∘ f)(x)=c
+\lim_{x → +∞}f (x)=b ⇒ \lim_{y → b}g(y)= c ⇒ \lim_{x → +∞}(g∘ f)(x)=c
 $$
 is *another* theorem, because $+∞ ∉ ℝ$.
 
@@ -97,7 +97,7 @@ resulting 3487 lemmas (conservative estimation).
 +++ *Convergence*, **Take 1**
 First attempt to define convergence: `f : α → β` is a
 function, we have a filter `F` on `α`, a filter `G` on
-`β`, and we want to say `f` tends to `β` along `α`.
+`β`, and we want to say `f` tends to `G` along `F`.
 We generalise the definition that appeared before:
 
     def Tendsto_preimage (f : α → β) (F : Filter α) (G : Filter β) : Prop :=
@@ -118,20 +118,20 @@ A small drawback of the definition `Tendsto_preimage` is that it exposes a quant
 containing `s`.)
 
 * Think of `𝓟 s` as replacing `s`, and of
-more general filters as "generalised sets" of `α`. So, for `F : Filter α`, saying `s ∈ F` means that `s` "contains" the corresponding "generalised set".
+more general filters as "generalised sets" of `α`. So, for `F : Filter α`, saying `t ∈ F` means that `t` "contains" the corresponding "generalised set".
 
-* Indeed, as we saw when `α = ℝ`, we have `s ∈ 𝓝 a ↔ ∃ ε > 0, ball a ε ⊆ s`. Here, the "generalised set" is an infinitesimal thickening of `{a}` representing arbitrarily small open balls centred at `a`.
+* Indeed, as we saw when `α = ℝ`, we have `t ∈ 𝓝 a ↔ ∃ ε > 0, ball a ε ⊆ t`. Here, the "generalised set" is an infinitesimal thickening of `{a}` representing arbitrarily small open balls centred at `a`.
 
 * If `α = ℕ`, then `Filter.atTop` is "the set of elements that are large enough".
 
 
-+++ Filters as generalised sets : NON HO SISTEMATO IL CODICE CHE VA AVEC
++++ Filters as generalised sets
 Since we're looking at filters as generalised sets, let's extend some set-theoretical notions to them.
 
 1. The **order** relation: sets on `α` are
-ordered by inclusion, so `T₁ ≤ T₂ ↔ T₁ ⊆ T₂ ↔ ∀ s, s ⊇ T₂ → s ⊇ T₁`. Hence:
+ordered by inclusion, so `S₁ ≤ S₂ ↔ S₁ ⊆ S₂ ↔ ∀ T, T ⊇ S₂ → T ⊇ S₁`. Hence:
 
-        theorem le_def (F G : Filter α) : F ≤ G ↔ ∀ s ∈ G, s ∈ F := Iff.rfl
+        theorem le_def (F G : Filter α) : F ≤ G ↔ ∀ t ∈ G, t ∈ F := Iff.rfl
 
 1. Image of a filter through a function `f : α → β`. This operation is called
 `Filter.map`, and `Filter.map F f = F.map f` by "dot-notation". We want
@@ -177,7 +177,7 @@ Intuitively, this means that `p` is true on the "generalised set" corresponding 
 * The notation `[=]ᶠ` (**no space** between `=`, `ᶠ` and the limit) is the special case when `p` is an equality: given a filter `F : Filter α`, and two functions `f g : α → β`, 
 
     ```lean
-    f =ᶠ[F] g ↔ ∀ᶠ x in l, f x = g x
+    f =ᶠ[F] g ↔ ∀ᶠ x in F, f x = g x
     ```
 
   so `f g` are "eventually equal".
