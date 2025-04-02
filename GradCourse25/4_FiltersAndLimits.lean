@@ -304,6 +304,7 @@ then `x` is in the closure of `M`: a couple of useful lemmas, before:. -/
 #check neBot_of_le
 
 example (u : ℕ → ℝ) (M : Set ℝ) (x : ℝ) (hux : Tendsto u atTop (𝓝 x))
+    (huM : ∀ᶠ n in atTop, u n ∈ M) : x ∈ closure M := by
   sorry
 
 
