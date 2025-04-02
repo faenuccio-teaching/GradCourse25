@@ -266,7 +266,7 @@ lemma EventuallyLTOne : ∀ᶠ x in 𝓝 (0 : ℝ), |x| < 1 := by
   sorry
 
 
--- **ToDo** **WARNING: THIS IS AN UGLY PROOF**
+-- **ToDo**
 example : ∀ᶠ z in 𝓝 (0 : ℝ), Tendsto (fun (n : ℕ) ↦ z ^ n) atTop (𝓝 0) := by
   sorry
 
@@ -281,6 +281,9 @@ example : Tendsto (fun n : ℕ ↦ (n + 1 : ℝ) / n) atTop (𝓝 1) := by
 
 -- # § Exercises
 
+-- **Exercise** → This is `EventuallyLTOne` above
+example : ∀ᶠ x in 𝓝 (0 : ℝ), |x| < 1 := by
+  sorry
 
 -- **Exercise**
 example (P Q : ℕ → Prop) (hP : ∀ᶠ n in atTop, P n) (hQ : ∀ᶠ n in atTop, Q n) :
@@ -335,9 +338,10 @@ example (p : α → Prop) (F : Filter α) : (∃ᶠ x in F, p x) ↔ ∀ A ∈ F
 example : ∃ᶠ x in 𝓝 (0 : ℝ), ∃ n : ℤ, x = 1 / (n : ℝ) := by
   sorry
 
+-- # § Exercises
 
 open Polynomial in
-/- **ToDo** Recall that a real number is `Algebraic` (over `ℚ`) if it is the root of a
+/- **Exercise** Recall that a real number is `Algebraic` (over `ℚ`) if it is the root of a
 polynomial with rational coeffficients.-/
 example : ∃ᶠ (x : ℝ) in atTop, IsAlgebraic ℚ x := by
   sorry
