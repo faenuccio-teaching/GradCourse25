@@ -383,23 +383,23 @@ example (n : ℕ) : n + 1 = 1 + n := by
   induction 12
   repeat' sorry
 
-
-elab "WhatsThis " n:term : tactic =>
-  do
-    let metavarVars ← getLCtx
-    for lh in metavarVars do
-      if `n == lh.userName then
-        return
-      else
-         do logInfo m!"Do you really mean {n}?"
-    return
+elab "WhatsThis " n:term : tactic =>  do
+  let mvarId ← getMainGoal --the Main Goal as a Metavariable
+  let metavarDecl : MetavarDecl  ← mvarId.getDecl -- the Main Goal as a Declaration
+  let metavarVars := metavarDecl.lctx -- the list of free variables in the Main Goal
+  for lh in metavarVars do
+    if n.raw.getId == lh.userName then --check whether our term appears in the Goal
+      return
+    else
+      continue
+  do logInfo m!"Do you really mean {n}?"
+  return
 
 macro "DeepMind_induction " ids:term : tactic =>
   `(tactic | (WhatsThis $ids
               induction $ids))
 
-example (n : ℕ) : n + 1 = 1 + n := by
-  sorry
+example (n : ℕ) : n + 1 = 1 + n := by sorry
 
 
 -- `⌘`
